@@ -1,11 +1,14 @@
-angular.module("App",['main']);
+angular.module("App",["main"]);
 
-angular.module("main",[]);
+var main = angular.module("main",[]);
 
- angular.module("main").controller("mainController",function($scope){
-    
-    //example of using scope
-    $scope.data = "that";
+main.controller("mainController", function($scope, $http){
+
+    var cinema = $http.get("http://localhost:3000/cinema").
+        then(function(response, status, headers, config) {
+            debugger
+            $scope.cinema = response.data;
+    });
 
     //for semantic ui dropdown
     $('.ui.dropdown')
@@ -15,5 +18,5 @@ angular.module("main",[]);
     //for semantic ui radio buttons
     $('.ui.radio.checkbox')
     .checkbox()
-;
+    ;
 });
