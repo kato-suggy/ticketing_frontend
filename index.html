@@ -1,62 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <title>Movie tickets</title>
-        <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
-        <script
-        src="https://code.jquery.com/jquery-3.1.1.min.js"
-        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-        crossorigin="anonymous"></script>
-        <script src="semantic/dist/semantic.min.js"></script>
     </head>
     <body ng-app="App">
 
-        <div class="ui container" ng-controller="mainController">
+        <div class="container" ng-controller="mainController">
 
             <h1>Best movie ticket booking system ever</h1>
 
-            <p>{{ cinema }}</p>
-
-            <div class="ui menu">
-                <div class="item">
-                    <div class="ui primary button" 
-                        ng-model="booking" 
-                        ng-click="booking = true">
+            <div class="btn-group">
+                <button type="button" class="btn btn-primary" 
+                ng-model="booking" ng-click="booking = true">
                         Book tickets
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="ui button" 
-                        ng-model="cancelling" 
-                        ng-click="cancelling = true">
+                </button>
+                        
+                <button type="button" class="btn" 
+                ng-model="cancelling" ng-click="cancelling = true">
                         Cancel a booking
-                    </div>
-                </div>
+                </button>
             </div>
 
-            <div class="ui form" 
-                ng-if="booking">
-                <div class="field">
-                    <label>Which cinema location are you looking for?</label>
-                    <div class="ui selection dropdown">
-                        <input type="hidden" name="location">
-                        <i class="dropdown icon"></i>
-                        <div class="default text">Choose from dropdown</div>
-                        <div class="menu">
-                            <div class="item" data-value="1">Cinema 1</div>
-                            <div class="item" data-value="2">Cinema 2</div>
-                            <div class="item" data-value="3">Cinema 3</div>
-                            <div class="item" data-value="4">Cinema 4</div>
-                        </div>
-                    </div>
+            <form ng-if="booking">
+                <div class="form-group">
+                    <label for="Cinemas">Choose a cinema location</label>
+                    <select class="form-control" id="chooseCinema">
+                        <option ng-repeat="cinema in cinemas">{{ cinema.name }}</option>
+                    </select>
                 </div>
-            </div>
+            </form>
 
-            <div class="ui form">
+            <div class="form">
                 <div class="field">
                     <label>Which movie do you want to see?</label>
-                    <div class="ui selection dropdown">
+                    <div class="selection dropdown">
                         <input type="hidden" name="movie">
                         <i class="dropdown icon"></i>
                         <div class="default text">Choose from dropdown</div>
@@ -72,47 +52,47 @@
                 </div>
             </div>
 
-            <div class="ui form">
+            <div class="form">
                 <label>Pick a day to see showing times.</label>
                     <div class="inline fields">
                     <div class="field">
-                    <div class="ui button">
+                    <div class="button">
                         <input type="hidden" name="dates" tabindex="0" class="hidden">
                         <label>Monday</label>
                     </div>
                     </div>
                     <div class="field">
-                    <div class="ui disabled button">
+                    <div class="disabled button">
                         <input type="hidden" name="dates" tabindex="0" class="hidden">
                         <label>Tuesday</label>
                     </div>
                     </div>
                     <div class="field">
-                    <div class="ui button">
+                    <div class="button">
                         <input type="hidden" name="dates" tabindex="0" class="hidden">
                         <label>Wednesday</label>
                     </div>
                     </div>
                     <div class="field">
-                    <div class="ui button">
+                    <div class="button">
                         <input type="hidden" name="dates" tabindex="0" class="hidden">
                         <label>Thursday</label>
                     </div>
                     </div>
                     <div class="field">
-                    <div class="ui button">
+                    <div class="button">
                         <input type="hidden" name="dates" tabindex="0" class="hidden">
                         <label>Friday</label>
                     </div>
                     </div>
                     <div class="field">
-                    <div class="ui button">
+                    <div class="button">
                         <input type="hidden" name="dates" tabindex="0" class="hidden">
                         <label>Saturday</label>
                     </div>
                     </div>
                     <div class="field">
-                    <div class="ui button">
+                    <div class="button">
                         <input type="hidden" name="dates" tabindex="0" class="hidden">
                         <label>Sunday</label>
                     </div>
@@ -120,23 +100,23 @@
                 </div>
             </div>
 
-            <div class="ui form">
+            <div class="form">
                 <div class="grouped fields">
                     <label for="fruit">Select a showing time:</label>
                     <div class="field">
-                    <div class="ui radio checkbox">
+                    <div class="radio checkbox">
                         <input type="radio" name="time" checked="" tabindex="0" class="hidden">
                         <label>13:00</label>
                     </div>
                     </div>
                     <div class="field">
-                    <div class="ui radio checkbox">
+                    <div class="radio checkbox">
                         <input type="radio" name="time" tabindex="0" class="hidden">
                         <label>17:00</label>
                     </div>
                     </div>
                     <div class="field">
-                    <div class="ui radio checkbox">
+                    <div class="radio checkbox">
                         <input type="radio" name="time" tabindex="0" class="hidden">
                         <label>21:00</label>
                     </div>
@@ -144,65 +124,65 @@
                 </div>
             </div>
 
-            <div class="ui form">
+            <div class="form">
                 <label>Choose your seats</label>
                     <div class="inline fields">
                         <div class="field">
-                        <div class="ui button">
+                        <div class="button">
                             <input type="hidden" name="seats" tabindex="0" class="hidden">
                             <label>1</label>
                         </div>
                         </div>
                         <div class="field">
-                        <div class="ui disabled button">
+                        <div class="disabled button">
                             <input type="hidden" name="seats" tabindex="0" class="hidden">
                             <label>2</label>
                         </div>
                         </div>
                         <div class="field">
-                        <div class="ui button">
+                        <div class="button">
                             <input type="hidden" name="seats" tabindex="0" class="hidden">
                             <label>3</label>
                         </div>
                         </div>
                         <div class="field">
-                        <div class="ui button">
+                        <div class="button">
                             <input type="hidden" name="seats" tabindex="0" class="hidden">
                             <label>4</label>
                         </div>
                         </div>
                         <div class="field">
-                        <div class="ui button">
+                        <div class="button">
                             <input type="hidden" name="seats" tabindex="0" class="hidden">
                             <label>5</label>
                         </div>
                         </div>
                         <div class="field">
-                        <div class="ui button">
+                        <div class="button">
                             <input type="hidden" name="seats" tabindex="0" class="hidden">
                             <label>6</label>
                         </div>
                         </div>
                         <div class="field">
-                        <div class="ui button">
+                        <div class="button">
                             <input type="hidden" name="seats" tabindex="0" class="hidden">
                             <label>7</label>
                         </div>
                         </div>
                         <div class="field">
-                            <div class="ui button">
+                            <div class="button">
                                 <input type="hidden" name="seats" tabindex="0" class="hidden">
                                 <label>8</label>
                             </div>
                             </div>
                         <div class="field">
-                        <div class="ui button">
+                        <div class="button">
                             <input type="hidden" name="seats" tabindex="0" class="hidden">
                             <label>9</label>
                         </div>
                         </div>
                         <div class="field">
-                        <div class="ui button">
+                        <div class="button">
                             <input type="hidden" name="seats" tabindex="0" class="hidden">
                             <label>10</label>
                         </div>
@@ -211,8 +191,8 @@
                 <p>1 seat already booked.</p>
             </div>
 
-            <form class="ui form">
-                    <h4 class="ui dividing header">Your details</h4>
+            <form class="form">
+                    <h4 class="dividing header">Your details</h4>
                     <div class="field">
                     <label>Name</label>
                     <div class="two fields">
@@ -232,10 +212,10 @@
                         </div>
                     </div>
                     </div>
-                    <h4 class="ui dividing header">Billing details</h4>
+                    <h4 class="dividing header">Billing details</h4>
                 <div class="field">
                     <label>Card Type</label>
-                    <div class="ui selection dropdown">
+                    <div class="selection dropdown">
                     <input type="hidden" name="card[type]">
                     <div class="default text">Type</div>
                     <i class="dropdown icon"></i>
@@ -262,7 +242,7 @@
                     <label>Expiration</label>
                     <div class="two fields">
                         <div class="field">
-                        <select class="ui fluid search dropdown" name="card[expire-month]">
+                        <select class="fluid search dropdown" name="card[expire-month]">
                             <option value="">Month</option>
                             <option value="1">January</option>
                             <option value="2">February</option>
@@ -284,17 +264,22 @@
                     </div>
                     </div>
                 </div>
-                <div class="ui button" tabindex="0">Submit and pay</div>
+                <div class="button" tabindex="0">Submit and pay</div>
             </form>
 
-            <div class="ui success message">
+            <div class="success message">
                 <div class="header">
                     Your booking was completed successfully.
                 </div>
                 <p>Booking ref etc will show here.</p>
             </div>
-        </div>    
 
+            <p>{{ cinemas }}</p>
+
+        </div>    
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     </body>
     <script type="text/javascript" src="./node_modules/angular/angular.js"></script>
     <script type="text/javascript" src="./app.js"></script>
