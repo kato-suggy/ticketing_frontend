@@ -1,10 +1,14 @@
 # ticketing_frontend
 
-start npm live server by typing 'live server' in project root.
+In project root, type:
 
-runs in browser on localhost:8080
+npm install
 
-start json server by typing "json-server --watch db.json" in project root
+live-server
 
-json server runs on localhost:3000
+json-server --watch db.json
+
+Live server runs in browser on localhost:8080.
+
+Json server runs on localhost:3000.
 
