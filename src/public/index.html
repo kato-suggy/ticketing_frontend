@@ -1,0 +1,46 @@
+<!doctype html>
+<html ng-app="app" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cinema Booking App</title>
+  <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <base href="/">
+</head>
+  <body>
+
+    <container ng-controller='CinemaController as ctrl' class='cinema__search'>
+      <pre>{{ ctrl | json }}</pre>
+      <form ng-submit='ctrl.findCinemaByPostcode();'>
+        <label for="postcode">Search for cinemas by postcode...</label>
+        <input
+          id='postcode'
+          type="text"
+          ng-model='ctrl.search.postcode'
+          placeholder="Postcode"
+        >
+        <button type="submit">
+          Search
+        </button>
+      </form>
+      <ul class='cinema__list'>
+        <li ng-repeat='cinema in ctrl.cinemas'>
+          <a href='' ng-click='ctrl.findShowings(cinema.venue_id);'>
+            {{ cinema.name }}
+          </a>
+        </li>
+      </ul>
+      <ul class='showings__list'>
+        <li ng-repeat='showing in ctrl.showings'>
+          <p>
+            Movie: {{ showing.title }}
+            Times: {{ showing.time }}
+          </p>
+        </li>
+      </ul>
+    </container>
+
+
+  </body>
+</html>
