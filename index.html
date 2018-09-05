@@ -11,10 +11,11 @@
         <div class="container" ng-controller="mainController">
 
             <h1>Best movie ticket booking system ever</h1>
-
+            
+            <!-- menu buttons -->
             <div class="btn-group">
                 <button type="button" class="btn btn-primary" 
-                ng-model="booking" ng-click="booking = true">
+                ng-model="choosingCinema" ng-click="getCinemas()">
                         Book tickets
                 </button>
                         
@@ -24,49 +25,49 @@
                 </button>
             </div>
 
-            <form ng-if="booking">
+            <form ng-if="choosingCinema">
+
+                <!-- choose cinema -->
+                <pre>{{cinemas | json}}</pre>
                 <div class="form-group">
                     <label for="Cinemas">Choose a cinema location</label>
-                        <select class="form-control" id="chosenCinema" 
-                                ng-model="chosenCinema" 
+                        <select class="form-control" id="cinemaSelector" 
+                                ng-model="cinemaSelect" 
+                                ng-change="selectCinema(cinemaSelect)"
                                 ng-options="cinema as cinema.name for cinema in cinemas track by cinema.id">
                             <option value="">-- choose cinema --</option>
                         </select>
                 </div>
-                <p ng-if="chosenCinema">You selected: {{chosenCinema.name}}, id: {{ chosenCinema.id }}</p>
 
-                <div class="form-group" ng-if="chosenCinema">
+                <!-- choose movie -->
+                <div class="form-group" ng-if="cinemaSelected" ng-model="movieSelect">
+                    <p>You selected: {{cinemaSelect.name}}, id: {{ cinemaSelect.id }}</p>
                     <label for="Movies">Choose a movie</label>
-                        <select class="form-control" id="chosenMovie" 
-                                ng-model="chosenMovie" 
-                                ng-options="movie as movie.name for movie in movies track by movie.id">
+                        <select class="form-control" id="movieSelector" 
+                                ng-model="movieSelect"
+                                ng-change="selectMovie(cinemaSelect, movieSelect)"
+                                ng-options="movie as movie.title for movie in movies track by movie.id">
                             <option value="">-- choose movie --</option>
                         </select>
+                        <!-- <pre>{{movies | json}}</pre> -->
                 </div>
-                <p ng-if="chosenMovie">You selected: {{chosenMovie.name}}, id: {{ chosenMovie.id }}</p>
 
-                <div class="form-group" ng-if="chosenMovie">
-                    <label for="Dates">Pick a date to see showing times.</label>
+                <!-- choose screening -->
+                <div class="form-group" ng-if="movieSelected" ng-model="screeningSelect">
+                    <p>You selected: {{selectedMovie.title}}, id: {{ selectedMovie.id }}</p>
+                    <pre>{{screenings | json}}</pre>
+                    <label for="Screenings">Pick a screening.</label>
+                        <select class="form-control" id="screeningSelector" 
+                                ng-model="screeningSelect"
+                                ng-change="selectScreening(screeningSelect)"
+                                ng-options="screening as screening.date for screening in screenings track by screening.id">
+                            <option value="">-- choose screening --</option>
+                        </select>
                         
                 </div>
 
-                <div ng-if="chosenDate">
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="chosenTime">
-                        <label class="form-check-label">
-                            13:00
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="chosenTime">
-                        <label class="form-check-label">
-                            19:00
-                        </label>
-                    </div>
-                    </div>
-                </div>
 
-            <div ng-if="chosenTime">
+            <div ng-if="chosenScreening">
                 <label for="Seats">Choose your seats</label>
                 <select class="form-control" id="chosenSeats" 
                 ng-model="chosenSeats" 
@@ -75,7 +76,8 @@
                 <p>1 seat already booked.</p>
                 </div>
 
-            <div ng-if="chosenSeats">
+                <!-- enter details and make booking -->
+                <div ng-if="chosenSeats">
                     <fieldset>
                         <legend>Your details</legend>
                         <div class="field">
@@ -155,6 +157,7 @@
                     </fieldset>    
                 </div>
 
+                <!-- confirmation -->
                 <div class="alert alert-success" role="alert"
                     ng-if="detailsSubmitted"> 
                     <p><strong>Your booking was completed successfully.</strong></p>
