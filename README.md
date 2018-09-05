@@ -6,9 +6,6 @@ npm install
 
 live-server
 
-json-server --watch db.json
+Live server runs in browser by default on localhost:8080.
 
-Live server runs in browser on localhost:8080.
-
-Json server runs on localhost:3000.
 

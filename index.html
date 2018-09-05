@@ -27,256 +27,143 @@
             <form ng-if="booking">
                 <div class="form-group">
                     <label for="Cinemas">Choose a cinema location</label>
-                    <select class="form-control" id="chooseCinema">
-                        <option ng-repeat="cinema in cinemas">{{ cinema.name }}</option>
-                    </select>
-                </div>
-            </form>
-
-            <div class="form">
-                <div class="field">
-                    <label>Which movie do you want to see?</label>
-                    <div class="selection dropdown">
-                        <input type="hidden" name="movie">
-                        <i class="dropdown icon"></i>
-                        <div class="default text">Choose from dropdown</div>
-                        <div class="menu">
-                            <div class="item" data-value="1">Movie 1</div>
-                            <div class="item" data-value="2">Movie 2</div>
-                            <div class="item" data-value="3">Movie 3</div>
-                            <div class="item" data-value="4">Movie 4</div>
-                            <div class="item" data-value="5">Movie 5</div>
-                            <div class="item" data-value="6">Movie 6</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form">
-                <label>Pick a day to see showing times.</label>
-                    <div class="inline fields">
-                    <div class="field">
-                    <div class="button">
-                        <input type="hidden" name="dates" tabindex="0" class="hidden">
-                        <label>Monday</label>
-                    </div>
-                    </div>
-                    <div class="field">
-                    <div class="disabled button">
-                        <input type="hidden" name="dates" tabindex="0" class="hidden">
-                        <label>Tuesday</label>
-                    </div>
-                    </div>
-                    <div class="field">
-                    <div class="button">
-                        <input type="hidden" name="dates" tabindex="0" class="hidden">
-                        <label>Wednesday</label>
-                    </div>
-                    </div>
-                    <div class="field">
-                    <div class="button">
-                        <input type="hidden" name="dates" tabindex="0" class="hidden">
-                        <label>Thursday</label>
-                    </div>
-                    </div>
-                    <div class="field">
-                    <div class="button">
-                        <input type="hidden" name="dates" tabindex="0" class="hidden">
-                        <label>Friday</label>
-                    </div>
-                    </div>
-                    <div class="field">
-                    <div class="button">
-                        <input type="hidden" name="dates" tabindex="0" class="hidden">
-                        <label>Saturday</label>
-                    </div>
-                    </div>
-                    <div class="field">
-                    <div class="button">
-                        <input type="hidden" name="dates" tabindex="0" class="hidden">
-                        <label>Sunday</label>
-                    </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form">
-                <div class="grouped fields">
-                    <label for="fruit">Select a showing time:</label>
-                    <div class="field">
-                    <div class="radio checkbox">
-                        <input type="radio" name="time" checked="" tabindex="0" class="hidden">
-                        <label>13:00</label>
-                    </div>
-                    </div>
-                    <div class="field">
-                    <div class="radio checkbox">
-                        <input type="radio" name="time" tabindex="0" class="hidden">
-                        <label>17:00</label>
-                    </div>
-                    </div>
-                    <div class="field">
-                    <div class="radio checkbox">
-                        <input type="radio" name="time" tabindex="0" class="hidden">
-                        <label>21:00</label>
-                    </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form">
-                <label>Choose your seats</label>
-                    <div class="inline fields">
-                        <div class="field">
-                        <div class="button">
-                            <input type="hidden" name="seats" tabindex="0" class="hidden">
-                            <label>1</label>
-                        </div>
-                        </div>
-                        <div class="field">
-                        <div class="disabled button">
-                            <input type="hidden" name="seats" tabindex="0" class="hidden">
-                            <label>2</label>
-                        </div>
-                        </div>
-                        <div class="field">
-                        <div class="button">
-                            <input type="hidden" name="seats" tabindex="0" class="hidden">
-                            <label>3</label>
-                        </div>
-                        </div>
-                        <div class="field">
-                        <div class="button">
-                            <input type="hidden" name="seats" tabindex="0" class="hidden">
-                            <label>4</label>
-                        </div>
-                        </div>
-                        <div class="field">
-                        <div class="button">
-                            <input type="hidden" name="seats" tabindex="0" class="hidden">
-                            <label>5</label>
-                        </div>
-                        </div>
-                        <div class="field">
-                        <div class="button">
-                            <input type="hidden" name="seats" tabindex="0" class="hidden">
-                            <label>6</label>
-                        </div>
-                        </div>
-                        <div class="field">
-                        <div class="button">
-                            <input type="hidden" name="seats" tabindex="0" class="hidden">
-                            <label>7</label>
-                        </div>
-                        </div>
-                        <div class="field">
-                            <div class="button">
-                                <input type="hidden" name="seats" tabindex="0" class="hidden">
-                                <label>8</label>
-                            </div>
-                            </div>
-                        <div class="field">
-                        <div class="button">
-                            <input type="hidden" name="seats" tabindex="0" class="hidden">
-                            <label>9</label>
-                        </div>
-                        </div>
-                        <div class="field">
-                        <div class="button">
-                            <input type="hidden" name="seats" tabindex="0" class="hidden">
-                            <label>10</label>
-                        </div>
-                        </div>
-                    </div>
-                <p>1 seat already booked.</p>
-            </div>
-
-            <form class="form">
-                    <h4 class="dividing header">Your details</h4>
-                    <div class="field">
-                    <label>Name</label>
-                    <div class="two fields">
-                        <div class="field">
-                        <input type="text" name="personal[first-name]" placeholder="First name">
-                        </div>
-                        <div class="field">
-                        <input type="text" name="personal[last-name]" placeholder="Last name">
-                        </div>
-                    </div>
-                    </div>
-                    <div class="field">
-                    <label>Mobile number</label>
-                    <div class="fields">
-                        <div class="twelve wide field">
-                        <input type="text" name="personal[mobile]" placeholder="Mobile number">
-                        </div>
-                    </div>
-                    </div>
-                    <h4 class="dividing header">Billing details</h4>
-                <div class="field">
-                    <label>Card Type</label>
-                    <div class="selection dropdown">
-                    <input type="hidden" name="card[type]">
-                    <div class="default text">Type</div>
-                    <i class="dropdown icon"></i>
-                    <div class="menu">
-                        <div class="item" data-value="visa">
-                        Visa
-                        </div>
-                        <div class="item" data-value="mastercard">
-                        Mastercard
-                        </div>
-                    </div>
-                    </div>
-                </div>
-                <div class="fields">
-                    <div class="seven wide field">
-                    <label>Card Number</label>
-                    <input type="text" name="card[number]" maxlength="16" placeholder="Card #">
-                    </div>
-                    <div class="three wide field">
-                    <label>CVC</label>
-                    <input type="text" name="card[cvc]" maxlength="3" placeholder="CVC">
-                    </div>
-                    <div class="six wide field">
-                    <label>Expiration</label>
-                    <div class="two fields">
-                        <div class="field">
-                        <select class="fluid search dropdown" name="card[expire-month]">
-                            <option value="">Month</option>
-                            <option value="1">January</option>
-                            <option value="2">February</option>
-                            <option value="3">March</option>
-                            <option value="4">April</option>
-                            <option value="5">May</option>
-                            <option value="6">June</option>
-                            <option value="7">July</option>
-                            <option value="8">August</option>
-                            <option value="9">September</option>
-                            <option value="10">October</option>
-                            <option value="11">November</option>
-                            <option value="12">December</option>
+                        <select class="form-control" id="chosenCinema" 
+                                ng-model="chosenCinema" 
+                                ng-options="cinema as cinema.name for cinema in cinemas track by cinema.id">
+                            <option value="">-- choose cinema --</option>
                         </select>
+                </div>
+                <p ng-if="chosenCinema">You selected: {{chosenCinema.name}}, id: {{ chosenCinema.id }}</p>
+
+                <div class="form-group" ng-if="chosenCinema">
+                    <label for="Movies">Choose a movie</label>
+                        <select class="form-control" id="chosenMovie" 
+                                ng-model="chosenMovie" 
+                                ng-options="movie as movie.name for movie in movies track by movie.id">
+                            <option value="">-- choose movie --</option>
+                        </select>
+                </div>
+                <p ng-if="chosenMovie">You selected: {{chosenMovie.name}}, id: {{ chosenMovie.id }}</p>
+
+                <div class="form-group" ng-if="chosenMovie">
+                    <label for="Dates">Pick a date to see showing times.</label>
+                        
+                </div>
+
+                <div ng-if="chosenDate">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="chosenTime">
+                        <label class="form-check-label">
+                            13:00
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="chosenTime">
+                        <label class="form-check-label">
+                            19:00
+                        </label>
+                    </div>
+                    </div>
+                </div>
+
+            <div ng-if="chosenTime">
+                <label for="Seats">Choose your seats</label>
+                <select class="form-control" id="chosenSeats" 
+                ng-model="chosenSeats" 
+                ng-options="seats as seat.number for seat in seats track by $index">
+                </select>
+                <p>1 seat already booked.</p>
+                </div>
+
+            <div ng-if="chosenSeats">
+                    <fieldset>
+                        <legend>Your details</legend>
+                        <div class="field">
+                        <label>Name</label>
+                        <div class="two fields">
+                            <div class="field">
+                            <input type="text" name="personal[first-name]" placeholder="First name">
+                            </div>
+                            <div class="field">
+                            <input type="text" name="personal[last-name]" placeholder="Last name">
+                            </div>
+                        </div>
                         </div>
                         <div class="field">
-                        <input type="text" name="card[expire-year]" maxlength="4" placeholder="Year">
+                        <label>Mobile number</label>
+                        <div class="fields">
+                            <div class="twelve wide field">
+                            <input type="text" name="personal[mobile]" placeholder="Mobile number">
+                            </div>
                         </div>
-                    </div>
-                    </div>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <label>Billing details</label>
+                        <div class="field">
+                            <label>Card Type</label>
+                            <div class="selection dropdown">
+                            <input type="hidden" name="card[type]">
+                            <div class="default text">Type</div>
+                            <i class="dropdown icon"></i>
+                                <div class="menu">
+                                    <div class="item" data-value="visa">
+                                        Visa
+                                    </div>
+                                    <div class="item" data-value="mastercard">
+                                        Mastercard
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fields">
+                            <div class="seven wide field">
+                            <label>Card Number</label>
+                            <input type="text" name="card[number]" maxlength="16" placeholder="Card #">
+                            </div>
+                            <div class="three wide field">
+                            <label>CVC</label>
+                            <input type="text" name="card[cvc]" maxlength="3" placeholder="CVC">
+                            </div>
+                            <div class="six wide field">
+                            <label>Expiration</label>
+                            <div class="two fields">
+                                <div class="field">
+                                <select class="fluid search dropdown" name="card[expire-month]">
+                                    <option value="">Month</option>
+                                    <option value="1">January</option>
+                                    <option value="2">February</option>
+                                    <option value="3">March</option>
+                                    <option value="4">April</option>
+                                    <option value="5">May</option>
+                                    <option value="6">June</option>
+                                    <option value="7">July</option>
+                                    <option value="8">August</option>
+                                    <option value="9">September</option>
+                                    <option value="10">October</option>
+                                    <option value="11">November</option>
+                                    <option value="12">December</option>
+                                </select>
+                                </div>
+                                <div class="field">
+                                <input type="text" name="card[expire-year]" maxlength="4" placeholder="Year">
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="button" tabindex="0">Submit and pay</div>
+                    </fieldset>    
                 </div>
-                <div class="button" tabindex="0">Submit and pay</div>
+
+                <div class="alert alert-success" role="alert"
+                    ng-if="detailsSubmitted"> 
+                    <p><strong>Your booking was completed successfully.</strong></p>
+                    <p>Booking ref etc will show here.</p>
+                </div>
+
             </form>
-
-            <div class="success message">
-                <div class="header">
-                    Your booking was completed successfully.
-                </div>
-                <p>Booking ref etc will show here.</p>
-            </div>
-
-            <p>{{ cinemas }}</p>
-
         </div>    
+
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
