@@ -4,11 +4,22 @@ var main = angular.module("main",[]);
 
 main.controller("mainController", function($scope, $http){
 
+    //variables that need to be submitted to booking function
+    $scope.name = "";
+    $scope.surname = "";
+    $scope.contactNum = "";
+    $scope.email = "";
+    $scope.cardNum = "";
+    $scope.cinemaId = 0;
+    $scope.screenId = 0;
+    $scope.screeningId = 0;
+    $scope.seatNumbers = [];
+
     $scope.getCinemas = function () {
         console.log('getting cinemas');
-        $scope.choosingCinema = true;
+        $scope.booking = true;
 
-        cinemas = $http.get("http://localhost:8080/ticketing/cinemas")
+        cinemas = $http.get(`http://localhost:8080/ticketing/cinemas`)
             .then(function(response, status, headers, config) {
                 $scope.cinemas = response.data;
 
@@ -51,16 +62,37 @@ main.controller("mainController", function($scope, $http){
             });
     }
 
-    $scope.selectScreening = function (screeningId) {
-        console.log('meep', screeningId);
+    $scope.selectScreening = function (screening) {
         $scope.screeningSelected = true;
         $scope.selectedScreening = screening;
         console.log('chosen screening');
-        //debugger
         $scope.getSeats(screening);
     }
 
+    $scope.getSeats = function (screening) {
+        console.log('meep', screening.id);
+        console.log('getting seats');
+        console.log('meep', screening.availableSeats);
+        $scope.seats = screening.availableSeats;
 
+    }
+
+    $scope.selectSeat = function (seatNum) {
+        console.log('meep', seatNum);
+        if ($scope.seatNumbers.includes(seatNum)) {
+            $scope.seatNumbers.splice($scope.seatNumbers.indexOf(seatNum), 1);
+            console.log('unselected a seat');
+            console.log('meep', $scope.seatNumbers);
+        } else {
+            $scope.seatNumbers.push(seatNum);
+            console.log('selected a seat');
+            console.log('meep', $scope.seatNumbers);
+        }
+        $scope.seatNumbers.sort();
+        console.log('meep', $scope.seatNumbers);
+    }
+
+    //$scope.getDetails = function () {}
 
 
     
