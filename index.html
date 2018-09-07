@@ -25,10 +25,9 @@
                 </button>
             </div>
 
-            <form ng-if="booking">
+            <form name="bookingDetails" ng-if="booking && !cancelling">
 
                 <!-- choose cinema -->
-                <pre>{{cinemas | json}}</pre>
                 <div class="form-group">
                     <label for="Cinemas">Choose a cinema location</label>
                         <select class="form-control" id="cinemaSelector" 
@@ -41,7 +40,6 @@
 
                 <!-- choose movie -->
                 <div class="form-group" ng-if="cinemaSelected" ng-model="movieSelect">
-                    <p>You selected: {{cinemaSelect.name}}, id: {{ cinemaSelect.id }}</p>
                     <label for="Movies">Choose a movie</label>
                         <select class="form-control" id="movieSelector" 
                                 ng-model="movieSelect"
@@ -49,14 +47,11 @@
                                 ng-options="movie as movie.title for movie in movies track by movie.id">
                             <option value="">-- choose movie --</option>
                         </select>
-                        <!-- <pre>{{movies | json}}</pre> -->
                 </div>
 
                 <!-- choose screening -->
                 <div ng-model="screeningSelect">
                 <div class="form-group" ng-if="movieSelected">
-                    <p>You selected: {{selectedMovie.title}}, id: {{ selectedMovie.id }}</p>
-                    <pre>{{screenings | json}}</pre>
                     <label for="Screenings">Pick a screening.</label>
                         <select class="form-control" id="screeningSelector" 
                                 ng-model="screeningSelect"
@@ -68,8 +63,6 @@
 
                 <!-- choose seats -->
                 <div class="form-group" ng-show="screeningSelected" ng-model="seatSelect">
-                    <p>You selected: {{selectedScreening.date}}, {{selectedScreening.time}}, id: {{ selectedScreening.id }}</p>
-                    <pre>{{selectedScreening.availableSeats | json}}</pre>
                     <label for="Seats">Choose your seats</label>
                         <div class="btn-group-toggle" data-toggle="buttons" role="group" id="seatSelector">
                             <label class="btn btn-outline-success" ng-repeat="seat in seats track by $index">
@@ -84,37 +77,58 @@
                 </div>
 
                 <!-- enter details and make booking -->
-                <div ng-if="chosenSeats" ng-model="enterDetails">
+                <div ng-if="chosenSeats" ng-model=enterDetails>
                     <div class="form-group">
                         <label for="Firstname">First name</label>
-                        <input type="text" class="form-control" id="Firstname" placeholder="Enter first name" ng-model="enterDetails">
+                        <input type="text" class="form-control" id="Firstname" name="firstName" placeholder="Enter first name" 
+                               ng-model="enterDetails.firstName">
                     </div>
                     <div class="form-group">
                         <label for="Lastname">Last name</label>
-                        <input type="text" class="form-control" id="Lastname" placeholder="Enter last name" ng-model="enterDetails">
+                        <input type="text" class="form-control" id="Lastname" name="lastName" placeholder="Enter last name"
+                               ng-model="enterDetails.lastName">
                     </div>
                     <div class="form-group">
                         <label for="Mobile">Mobile number</label>
-                        <input type="text" class="form-control" id="Mobile" placeholder="Enter mobile number" ng-model="enterDetails">
+                        <input type="text" class="form-control" id="Mobile" name="mobile" placeholder="Enter mobile number"
+                               ng-model="enterDetails.mobile">
                     </div>
                     <div class="form-group">
                         <label for="Email">Email</label>
-                        <input type="text" class="form-control" id="Email" placeholder="Enter email" ng-model="enterDetails">
+                        <input type="text" class="form-control" id="Email" name="email" placeholder="Enter email"
+                               ng-model="enterDetails.email">
                     </div>
                     <div class="form-group">
                         <label for="Card">Credit card number</label>
-                        <input type="text" class="form-control" id="Card" placeholder="Enter credit card number without spaces" ng-model="enterDetails">
+                        <input type="text" class="form-control" id="Card" name="cardNum" placeholder="Enter credit card number without spaces"
+                               ng-model="enterDetails.cardNum">
                     </div>
-                    <div class="btn btn-primary" type="submit" ng-model="enterDetails">Submit and pay</div>   
+                    <button class="btn btn-primary" ng-click="submitDetails(enterDetails)" >Submit and pay</button>   
                 </div>
 
                 <!-- confirmation -->
                 <div class="alert alert-success" role="alert"
                     ng-if="detailsSubmitted"> 
                     <p><strong>Your booking was completed successfully.</strong></p>
-                    <p>Booking ref etc will show here.</p>
+                    <p>Booking ref: {{bookingRef}}</p>
                 </div>
 
+                <!-- error with booking -->
+                <div class="alert alert-danger" role="alert"
+                    ng-if="submissionFailed">
+                    <p><strong>There was an error with your booking.</strong></p>
+                </div>
+
+            </form>
+
+            <!-- cancelling a booking -->
+            <form name="cancellingDetails" ng-if="cancelling && !booking">
+                    <div class="form-group">
+                        <label for="BookingRef">Booking reference</label>
+                        <input type="text" class="form-control" id="BookingRef" name="bookingRef" placeholder="Enter your booking reference" 
+                                ng-model="cancelRef">
+                        <button class="btn btn-danger" ng-click="cancelBooking(cancelRef)">Cancel booking</button>
+                    </div>
             </form>
         </div>    
 
