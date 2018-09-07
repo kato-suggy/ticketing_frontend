@@ -4,7 +4,6 @@ var main = angular.module("main",[]);
 
 main.controller("mainController", function($scope, $http){
 
-    //variables that need to be submitted to booking function
     $scope.details = {
         name: "",
         surname: "",
