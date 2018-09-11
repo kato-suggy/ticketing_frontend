@@ -1,4 +1,7 @@
-var app = angular.module("App",["main"]);
+var app = angular.module("App",[
+    "main",
+    "cinemas"
+]);
 
 var main = angular.module("main",[]);
 

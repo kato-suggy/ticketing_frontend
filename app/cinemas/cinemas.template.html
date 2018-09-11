@@ -1,0 +1,9 @@
+<div class="form-group">
+    <label for="Cinemas">Choose a cinema location</label>
+        <select class="form-control" id="cinemaSelector" 
+                ng-model="cinemaSelect" 
+                ng-change="selectCinema(cinemaSelect)"
+                ng-options="cinema as cinema.name for cinema in cinemas track by cinema.id">
+            <option value="">-- choose cinema --</option>
+        </select>
+</div>

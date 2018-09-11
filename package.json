@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "angular": "^1.7.3"
+    "angular": "^1.7.3",
+    "karma": "^3.0.0"
   }
 }
