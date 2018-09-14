@@ -1,9 +1,6 @@
 import angular from 'angular';
 import CinemaController from './cinema.controller';
 import CinemaService from './cinema.service';
-import cinemaApp from './cinema.directive';
-
-// import '../style/app.css';
 
 const MODULE_NAME = 'app';
 
