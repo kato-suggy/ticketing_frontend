@@ -1,7 +1,6 @@
-### TO RUN
+Works with ticketing_backend https://github.com/alekkasOrchard/ticketing_backend
 
-* `npm install`
-* `npm start`
-* For requests to work to API, you'll need to add CORS support in your browser
+Once db and backend are running, do:
 
-https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi?hl=en
+npm install
+npm start
