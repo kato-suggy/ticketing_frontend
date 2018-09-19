@@ -1,4 +1,18 @@
-import angular from 'angular';
+(function() {
+  'use strict';
+
+  angular.module('app', [
+    'app.core',
+    'app.booking',
+    'app.layout'
+  ]);
+
+})();
+
+
+
+
+/* import angular from 'angular';
 import CinemaController from './cinema.controller';
 import CinemaService from './cinema.service';
 
@@ -10,4 +24,4 @@ angular
   .service('CinemaService', CinemaService)
   .directive('cinemaApp', cinemaApp)
 
-export default MODULE_NAME;
+export default MODULE_NAME; */

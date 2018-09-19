@@ -1,8 +1,27 @@
-class CinemaController {
-  constructor(CinemaService) {
+(function() {
+  'use strict';
+
+  angular
+    .module('app.booking')
+    .controller('BookingController', BookingController);
+
+  BookingController.$inject = ['logger'];
+  /* @ngInject */
+  function BookingController(logger) {
+    var vm = this;
+    vm.title = 'Booking';
+
+    activate();
+
+    function activate() {
+      logger.info('Activated Booking View');
+    }
+  }
+})();
+
     
-    //service
-    this.service = CinemaService;
+  
+/*     this.service = CinemaService;
 
     //booleans
     this.booking = false;
@@ -30,7 +49,6 @@ class CinemaController {
       screeningId: 0,
       seatNumbers: []
     };
-  }
 
   getCinemas = () => {
     this.booking = true;
@@ -121,8 +139,7 @@ class CinemaController {
         //cancelled would be a boolean depending if deleteBooking succeeded or not?
         this.cancelled = response.data;
       })
-  }
+  } */
 
-}
 
-export default CinemaController;
+
