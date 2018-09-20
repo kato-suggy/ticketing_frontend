@@ -70,7 +70,7 @@ gulp.task('styles', ['clean-styles'], function() {
       .pipe($.less())
       //        .on('error', errorLogger) // more verbose and dupe output. requires emit.
       .pipe($.autoprefixer({ browsers: ['last 2 version', '> 5%'] }))
-      .pipe(gulp.dest(config.temp)) );
+      .pipe(gulp.dest(config.temp)));
 });
 
 /**
@@ -237,7 +237,7 @@ gulp.task('optimize', ['inject', 'test'], function() {
       .pipe($.useref())
       // Replace the file names in the html with rev numbers
       .pipe($.revReplace())
-      .pipe(gulp.dest(config.build)) );
+      .pipe(gulp.dest(config.build)));
 });
 
 /**
@@ -451,8 +451,8 @@ function getNodeOptions(isDev) {
     script: config.nodeServer,
     delayTime: 1,
     env: {
-      "PORT": port,
-      "NODE_ENV": isDev ? 'dev' : 'build'
+      'PORT': port,
+      'NODE_ENV': isDev ? 'dev' : 'build'
     },
     watch: [config.server]
   };
